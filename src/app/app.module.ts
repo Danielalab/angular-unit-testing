@@ -10,12 +10,14 @@ import { TopTracksListComponent } from './components/ranking-songs/top-tracks-li
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ToDoComponent } from './pages/to-do/to-do.component';
 import { RankingSongsComponent } from './pages/ranking-songs/ranking-songs.component';
+import { FormAddTaskComponent } from './components/to-do/form-add-task/form-add-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToDoListComponent,
     ItemToDoComponent,
+    FormAddTaskComponent,
     SongItemComponent,
     TopTracksListComponent,
     NavbarComponent,
