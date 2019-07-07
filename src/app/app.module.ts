@@ -12,6 +12,10 @@ import { ToDoComponent } from './pages/to-do/to-do.component';
 import { RankingSongsComponent } from './pages/ranking-songs/ranking-songs.component';
 import { FormAddTaskComponent } from './components/to-do/form-add-task/form-add-task.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,9 @@ import { FormAddTaskComponent } from './components/to-do/form-add-task/form-add-
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
