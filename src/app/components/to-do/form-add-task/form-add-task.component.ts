@@ -13,7 +13,7 @@ export class FormAddTaskComponent {
 
   onSubmitFormAddNote(event) {
     event.preventDefault();
-    this.firestoreService.addNote(this.newNote.value);
+    this.firestoreService.addTask(this.newNote.value);
     this.newNote.setValue('');
   }
 
