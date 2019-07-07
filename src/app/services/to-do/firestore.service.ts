@@ -9,16 +9,16 @@ export class FirestoreService {
 
   constructor(private angularFirestore: AngularFirestore) { }
 
-  addNote(textTask: string) {
-    return this.angularFirestore.collection('notes').add({
+  addTask(textTask: string) {
+    return this.angularFirestore.collection('tasks').add({
       text: textTask
     })
   }
 
-  getNotes() {
+  getTasks() {
     // .snapshotChanges() returns a DocumentChangeAction[], which contains
     // a lot of information about "what happened" with each change.
-    return this.angularFirestore.collection('notes').snapshotChanges()
+    return this.angularFirestore.collection('tasks').snapshotChanges()
       .pipe(
         map(actions => actions.map(action => {
           const data = action.payload.doc.data();

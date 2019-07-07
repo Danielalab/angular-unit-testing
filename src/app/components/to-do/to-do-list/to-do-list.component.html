@@ -1,3 +1,3 @@
 <ul class="menu-list">
-  <app-item-to-do></app-item-to-do>
+  <app-item-to-do *ngFor="let task of arrTasks" [taskData]="task"></app-item-to-do>
 </ul>
