@@ -1,7 +1,9 @@
 import { of } from 'rxjs';
 
 export class MockFirestoreService {
-  getNotes() {
+  getTasks() {
       return of([]);
   }
+
+  addTask() {}
 }
