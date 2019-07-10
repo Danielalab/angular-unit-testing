@@ -51,7 +51,7 @@ describe('ToDoListComponent', () => {
 
     // mockeando el valor de retorno de getTasks creando un observable
 
-    spyOn(firestoreService, 'addTask').and.returnValue(
+    spyOn(firestoreService, 'getTasks').and.returnValue(
       Observable.create((observer: Observer<{ text: string; id: string; }[]>) => {
         observer.next(mockTasks);
         return observer;

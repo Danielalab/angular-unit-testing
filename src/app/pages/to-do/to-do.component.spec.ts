@@ -8,6 +8,7 @@ import { ToDoListComponent } from 'src/app/components/to-do/to-do-list/to-do-lis
 // Importando servicio y mocks
 import { MockFirestoreService } from '../../__mocks__/FirestoreService-mock';
 import { FirestoreService } from 'src/app/services/to-do/firestore.service';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('ToDoComponent', () => {
   let component: ToDoComponent;
@@ -21,6 +22,10 @@ describe('ToDoComponent', () => {
         FormAddTaskComponent,
         ItemToDoComponent,
         ToDoListComponent
+      ],
+      imports: [
+        ReactiveFormsModule,
+        FormsModule
       ],
       // declarando los provedores utilizados
       providers: [

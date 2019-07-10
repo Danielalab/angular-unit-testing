@@ -41,13 +41,9 @@ describe('FormAddTaskComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Deberia de guardar el valor del input "aprender testing" en newNote', () => {
-    inputEl.nativeElement.value = 'aprender testing';
-    expect(component.newNote.value).toBe('aprender testing');
-  })
-
   it('Deberia de renderizar el valor de newNote en el input', () => {
     component.newNote.setValue('aprender tests');
+    expect(component.newNote.value).toBe('aprender tests');
     expect(inputEl.nativeElement.value).toBe('aprender tests');
   })
 

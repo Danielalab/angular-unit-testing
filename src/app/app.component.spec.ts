@@ -3,18 +3,32 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { ToDoComponent } from './pages/to-do/to-do.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FormAddTaskComponent } from './components/to-do/form-add-task/form-add-task.component';
+import { ItemToDoComponent } from './components/to-do/item-to-do/item-to-do.component';
+import { ToDoListComponent } from './components/to-do/to-do-list/to-do-list.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FirestoreService } from './services/to-do/firestore.service';
+import { MockFirestoreService } from './__mocks__/FirestoreService-mock';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        ReactiveFormsModule,
+        FormsModule
       ],
       declarations: [
         AppComponent,
         ToDoComponent,
-        NavbarComponent
+        NavbarComponent,
+        FormAddTaskComponent,
+        ItemToDoComponent,
+        ToDoListComponent
       ],
+      providers: [
+        { provide: FirestoreService, useClass: MockFirestoreService }
+      ]
     }).compileComponents();
   }));
 
