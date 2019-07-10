@@ -1,7 +1,7 @@
 import { of } from 'rxjs';
 
 export class AngularFirestoreMock {
-  constructor(private data = []){
+  constructor(private data){
     this.data = data
   }
  
