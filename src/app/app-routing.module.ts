@@ -4,7 +4,7 @@ import { ToDoComponent } from './pages/to-do/to-do.component';
 import { RankingSongsComponent } from './pages/ranking-songs/ranking-songs.component';
 
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: 'to-do', component:  ToDoComponent},
   { path: 'ranking-songs', component: RankingSongsComponent },
   { path: '', redirectTo: '/to-do', pathMatch: 'full' },

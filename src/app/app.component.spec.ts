@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { ToDoComponent } from './pages/to-do/to-do.component';
@@ -9,12 +9,21 @@ import { ToDoListComponent } from './components/to-do/to-do-list/to-do-list.comp
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FirestoreService } from './services/to-do/firestore.service';
 import { MockFirestoreService } from './__mocks__/FirestoreService-mock';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { routes } from './app-routing.module';
+import { RankingSongsComponent } from './pages/ranking-songs/ranking-songs.component';
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
+  let router: Router;
+  let location: Location;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule,
+        RouterTestingModule.withRoutes(routes),
         ReactiveFormsModule,
         FormsModule
       ],
@@ -24,7 +33,8 @@ describe('AppComponent', () => {
         NavbarComponent,
         FormAddTaskComponent,
         ItemToDoComponent,
-        ToDoListComponent
+        ToDoListComponent,
+        RankingSongsComponent
       ],
       providers: [
         { provide: FirestoreService, useClass: MockFirestoreService }
@@ -32,22 +42,39 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
+  beforeEach(() => {
+    // injectamos una instacia de router y location
+    router = TestBed.get(Router);
+    location = TestBed.get(Location);
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.debugElement.componentInstance;
+    // Esto configura un "oyente" de cambio de ubicación y realiza la navegación inicial.
+    router.initialNavigation();
+  })
+
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
-/*   it(`should have as title 'testing-videos'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('testing-videos');
-  });
+  describe('Router: App', () => {
+    // el enrutamiento es una actividad asicnrona por lo que usamos fakeAsync
+    it('Deberia de redireccionar a "/to-do" al navegar a ""', fakeAsync(() => { (1)
+      router.navigate(['']);
+      tick();
+      expect(location.path()).toBe('/to-do');
+    }));
 
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to testing-videos!');
-  }); */
+    it('Deberia de ir a "/to-do" al navegar a "to-do"', fakeAsync(() => { (1)
+      router.navigate(['']);
+      tick();
+      expect(location.path()).toBe('/to-do');
+    }));
+
+    it('Deberia de ir a "/ranking-songs" al navegar a "ranking-songs"', fakeAsync(() => { (1)
+      router.navigate(['']);
+      tick();
+      expect(location.path()).toBe('/to-do');
+    }));
+  })
+
 });
